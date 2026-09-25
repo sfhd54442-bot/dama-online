@@ -1,3 +1,4 @@
+import { supabase } from './supabase'
 import React,{useEffect,useMemo,useState} from 'react';import{createRoot}from'react-dom/client';import{createClient}from'@supabase/supabase-js';import'./style.css';
 const sb=createClient(import.meta.env.VITE_SUPABASE_URL||'',import.meta.env.VITE_SUPABASE_ANON_KEY||'');const pid=(()=>{let x=localStorage.getItem('dama_pid');if(!x){x=crypto.randomUUID();localStorage.setItem('dama_pid',x)}return x})();
 const dirs=[[1,1],[1,-1],[-1,1],[-1,-1]], inside=(r,c)=>r>=0&&r<8&&c>=0&&c<8;const initial=()=>Array.from({length:8},(_,r)=>Array.from({length:8},(_,c)=>(r+c)%2?(r<3?'b':r>4?'r':null):null));
